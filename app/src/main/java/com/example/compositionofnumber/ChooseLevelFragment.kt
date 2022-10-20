@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.compositionofnumber.databinding.FragmentChooseLevelBinding
 import com.example.compositionofnumber.databinding.FragmentGameFinishedBinding
+import com.example.compositionofnumber.domain.entities.Level
 import java.lang.RuntimeException
 
 
@@ -25,8 +26,31 @@ class ChooseLevelFragment : Fragment() {
         return  binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            buttonLevelTest.setOnClickListener{
+                launchGameFragment(Level.TEST)
+            }
+            buttonLevelEasy.setOnClickListener{
+                launchGameFragment(Level.EASY)
+            }
+            buttonLevelNormal.setOnClickListener{
+                launchGameFragment(Level.NORMAL)
+            }
+            buttonLevelHard.setOnClickListener{
+                launchGameFragment(Level.HARD)
+            }
+        }
+
+    }
+
+    private fun launchGameFragment(level:Level) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container,GameFragment.newInstance(level))
+            .addToBackStack(null)
+            .commit()
 
     }
 
@@ -34,5 +58,14 @@ class ChooseLevelFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+         const val NAME = "ChooseLevelFragment"
+
+        fun newInstance(): ChooseLevelFragment{
+            return  ChooseLevelFragment()
+
+        }
     }
 }
