@@ -27,16 +27,16 @@ object GameRepositoryImpl: GameRepository {
     override fun gameSettings(level: Level): GameSettings {
        return  when (level) {
                   Level.TEST -> {
-                      GameSettings(10,5,50,10)
+                      GameSettings(10,2,10,5)
                   }
            Level.EASY -> {
-               GameSettings(50,6,70,60)
+               GameSettings(50,6,30,6)
            }
            Level.NORMAL -> {
-               GameSettings(100,10,85,60)
+               GameSettings(100,3,25,7)
            }
            Level.HARD -> {
-               GameSettings(1000,10,100,120)
+               GameSettings(1000,5,400,8)
            }
 
        }

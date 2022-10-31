@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.compositionofnumber.databinding.FragmentGameBinding
 import com.example.compositionofnumber.databinding.FragmentWelcomeBinding
 import com.example.compositionofnumber.domain.entities.GameResult
@@ -115,13 +116,22 @@ class GameFragment : Fragment() {
         }
     }
 
+//     BEFORE JPACK
+//    private  fun launchGameFinishedFragment (gameResult: GameResult) {
+//              requireActivity().supportFragmentManager.beginTransaction()
+//                  .replace(R.id.main_container,GameFinishedFragment.newInstance(gameResult))
+//                  .addToBackStack(null)
+//                  .commit()
+//    }
 
     private  fun launchGameFinishedFragment (gameResult: GameResult) {
-              requireActivity().supportFragmentManager.beginTransaction()
-                  .replace(R.id.main_container,GameFinishedFragment.newInstance(gameResult))
-                  .addToBackStack(null)
-                  .commit()
+        val args = Bundle().apply {
+            putParcelable(GameFinishedFragment.KEY_GAME_RESULT, gameResult)
+        }
+
+                 findNavController().navigate(R.id.action_gameFragment2_to_gameFinishedFragment2, args)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -136,7 +146,7 @@ class GameFragment : Fragment() {
 
     companion object {
 
-        private const val KEY_LEVEL = "level"
+         const val KEY_LEVEL = "level"
 
         fun newInstance(level: Level):GameFragment {
             return  GameFragment().apply {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.compositionofnumber.ChooseLevelFragment
 import com.example.compositionofnumber.R
 import com.example.compositionofnumber.databinding.FragmentWelcomeBinding
@@ -32,7 +33,7 @@ class WelcomeFragment : Fragment() {
 
         }
     }
-//
+//     BEFORE JETPACK NAVIGATION
 //    private fun launchChooseLevelFragment() {
 //        requireActivity().supportFragmentManager.beginTransaction()
 //            .replace(R.id.main_container,ChooseLevelFragment.newInstance())
@@ -41,7 +42,7 @@ class WelcomeFragment : Fragment() {
 //
 //    }
     private fun launchChooseLevelFragment() {
-       
+        findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment2)
 
     }
 
