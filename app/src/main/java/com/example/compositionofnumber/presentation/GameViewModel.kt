@@ -2,6 +2,7 @@ package com.example.compositionofnumber.presentation
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -76,6 +77,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         _minPercent.value = gameSettings.minPercentageofRightAnswers
         startTimer()
         generateQuestion()
+        updateProgress()
         
     }
 
@@ -95,6 +97,9 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     }
 
      private fun  updateProgress(){
+         if(countOfQuestions == 0) {
+             Log.d("", "Noll")
+         }
          val percentage = ( (countOfRightAnswers/countOfQuestions.toDouble()) * 100  ).toInt()
          _percentageOfRightAnswers.value = percentage
          _progressAnswers.value = String.format(
