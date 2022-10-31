@@ -27,7 +27,7 @@ object GameRepositoryImpl: GameRepository {
     override fun gameSettings(level: Level): GameSettings {
        return  when (level) {
                   Level.TEST -> {
-                      GameSettings(10,5,50,60)
+                      GameSettings(10,5,50,10)
                   }
            Level.EASY -> {
                GameSettings(50,6,70,60)

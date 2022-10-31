@@ -69,7 +69,7 @@ class GameFragment : Fragment() {
             option.setOnClickListener{
                 viewModel.chooseAnswer(option.text.toString().toInt())
             }
-        }
+        }                                                       
     }
 
     private  fun observeViewModel() {

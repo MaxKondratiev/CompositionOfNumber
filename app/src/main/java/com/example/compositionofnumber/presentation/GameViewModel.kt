@@ -59,15 +59,11 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     private val _gameResult =  MutableLiveData<GameResult>()
     val gameResult : LiveData<GameResult>
         get() = _gameResult
-                                       
-
-
 
     //
     private  var timer : CountDownTimer? = null
     private var countOfRightAnswers = 0
     private var countOfQuestions = 0
-    
 
 
 
